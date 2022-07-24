@@ -8,15 +8,18 @@
 import UIKit
 import SwiftUI
 
-class FirstTabCoordinator: Coordinator {
+class FirstTabCoordinator: NSObject, Coordinator {
     
     var rootViewController: UINavigationController
     
     let viewModel = FirstTabViewModel()
     
-    init() {
+    override init() {
         rootViewController = UINavigationController()
         rootViewController.navigationBar.prefersLargeTitles = true
+        super.init()
+        
+        rootViewController.delegate = self
     }
     
     lazy var firstVC: FirstViewController = {
@@ -36,5 +39,15 @@ class FirstTabCoordinator: Coordinator {
     func goToDetail() {
         let detailVC = UIHostingController(rootView: FirstDetailView(viewModel: viewModel))
         rootViewController.pushViewController(detailVC, animated: true)
+    }
+}
+
+extension FirstTabCoordinator: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController as? UIHostingController<FirstDetailView> != nil {
+            print("Detail will be shown")
+        } else if viewController as? FirstViewController != nil {
+            print("First vc will be shown")
+        }
     }
 }

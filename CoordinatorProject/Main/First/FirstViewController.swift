@@ -5,6 +5,7 @@
 //  Created by Jonathan Go on 24.07.22.
 //
 
+import Combine
 import UIKit
 
 class FirstViewController: UIViewController {
@@ -12,6 +13,8 @@ class FirstViewController: UIViewController {
     var infoLabel: UILabel?
     var viewModel: FirstTabViewModel!
     var showDetailRequested: () -> Void = { }
+    
+    var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +28,7 @@ class FirstViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        infoLabel?.text = "\(viewModel.name) with email \(viewModel.email)"
+        //infoLabel?.text = "\(viewModel.name) with email \(viewModel.email)"
     }
     
     func setupDetailbutton() {
@@ -40,6 +43,16 @@ class FirstViewController: UIViewController {
         let info = UILabel(frame: CGRect(x: 100, y: 300, width: 300, height: 60))
         self.view.addSubview(info)
         self.infoLabel = info
+        
+        viewModel.$email.combineLatest(viewModel.$name)
+            .sink { [weak self] (email, name) in
+                if name.count + email.count > 0 {
+                    infoLabel?.text = "\(viewModel.name) with email \(viewModel.email)"
+                } else {
+                    self?.infoLabel?.text = ""
+                }
+            }
+            .store(in: $subscriptions)
     }
     
     @objc
