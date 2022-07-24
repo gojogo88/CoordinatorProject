@@ -14,22 +14,28 @@ class ApplicationCoordinator: Coordinator {
     var window: UIWindow
     
     var childCoordinators = [Coordinator]()
-        
+    
+    let hasSeenOboarding = CurrentValueSubject<Bool, Never>(false)
+    var subscriptions = Set<AnyCancellable>()
+
     init(window: UIWindow) {
         self.window = window
     }
     
     func start() {
-//        let onboardingCoordinator = OnboardingCoordinator()
-//        onboardingCoordinator.start()
-//        self.childCoordinators = [onboardingCoordinator]
-//        window.rootViewController = onboardingCoordinator.rootViewController
         
-        let mainCoordinator = MainCoordinator()
-        mainCoordinator.start()
-        self.childCoordinators = [mainCoordinator]
-        window.rootViewController = mainCoordinator.rootViewController
+        hasSeenOboarding.sink { [weak self] hasSeen in
+            if hasSeen {
+                let mainCoordinator = MainCoordinator()
+                mainCoordinator.start()
+                self?.childCoordinators = [mainCoordinator]
+                self?.window.rootViewController = mainCoordinator.rootViewController
+            } else if let hasSeenOboarding = self?.hasSeenOboarding {
+                let onboardingCoordinator = OnboardingCoordinator(hasSeenOnboarding: hasSeenOboarding)
+                onboardingCoordinator.start()
+                self?.childCoordinators = [onboardingCoordinator]
+                self?.window.rootViewController = onboardingCoordinator.rootViewController
+            }
+        }.store(in: &subscriptions)
     }
-    
-    
 }
