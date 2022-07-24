@@ -12,15 +12,17 @@ class ApplicationCoordinator: Coordinator {
     
     var window: UIWindow
     
+    var childCoordinators = [Coordinator]()
+    
     init(window: UIWindow) {
         self.window = window
     }
     
     func start() {
-        //let home = ViewController()
-        let home = UIHostingController(rootView: ContentView())
-        let navController = UINavigationController(rootViewController: home)
-        window.rootViewController = navController
+        let onboardingCoordinator = OnboardingCoordinator()
+        onboardingCoordinator.start()
+        self.childCoordinators = [onboardingCoordinator]
+        window.rootViewController = onboardingCoordinator.rootViewController
     }
     
     

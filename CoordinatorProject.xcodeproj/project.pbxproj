@@ -15,6 +15,9 @@
 		6CEB2C0B288D37D300D25633 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEB2C0A288D37D300D25633 /* ContentView.swift */; };
 		6CEB2C0E288D383F00D25633 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEB2C0D288D383F00D25633 /* Coordinator.swift */; };
 		6CEB2C10288D386A00D25633 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEB2C0F288D386A00D25633 /* ApplicationCoordinator.swift */; };
+		6CEB2C14288D3A0300D25633 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEB2C13288D3A0300D25633 /* OnboardingCoordinator.swift */; };
+		6CEB2C16288D3A3000D25633 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEB2C15288D3A3000D25633 /* OnboardingView.swift */; };
+		6CEB2C19288D3C4000D25633 /* ScaledImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEB2C18288D3C4000D25633 /* ScaledImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		6CEB2C0A288D37D300D25633 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6CEB2C0D288D383F00D25633 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		6CEB2C0F288D386A00D25633 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		6CEB2C13288D3A0300D25633 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		6CEB2C15288D3A3000D25633 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		6CEB2C18288D3C4000D25633 /* ScaledImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +71,10 @@
 				6CEB2C0F288D386A00D25633 /* ApplicationCoordinator.swift */,
 				6CEB2BFA288D367500D25633 /* ViewController.swift */,
 				6CEB2C0A288D37D300D25633 /* ContentView.swift */,
+				6CEB2C12288D39EC00D25633 /* Main */,
+				6CEB2C11288D39E600D25633 /* Onboarding */,
 				6CEB2C0C288D383600D25633 /* Protocols */,
+				6CEB2C17288D3C2C00D25633 /* Helper */,
 				6CEB2BFF288D367700D25633 /* Assets.xcassets */,
 				6CEB2C01288D367700D25633 /* LaunchScreen.storyboard */,
 				6CEB2C04288D367700D25633 /* Info.plist */,
@@ -79,6 +88,30 @@
 				6CEB2C0D288D383F00D25633 /* Coordinator.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		6CEB2C11288D39E600D25633 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				6CEB2C13288D3A0300D25633 /* OnboardingCoordinator.swift */,
+				6CEB2C15288D3A3000D25633 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		6CEB2C12288D39EC00D25633 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		6CEB2C17288D3C2C00D25633 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				6CEB2C18288D3C4000D25633 /* ScaledImageView.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,7 +187,10 @@
 				6CEB2BFB288D367500D25633 /* ViewController.swift in Sources */,
 				6CEB2BF7288D367500D25633 /* AppDelegate.swift in Sources */,
 				6CEB2C0E288D383F00D25633 /* Coordinator.swift in Sources */,
+				6CEB2C14288D3A0300D25633 /* OnboardingCoordinator.swift in Sources */,
 				6CEB2C0B288D37D300D25633 /* ContentView.swift in Sources */,
+				6CEB2C19288D3C4000D25633 /* ScaledImageView.swift in Sources */,
+				6CEB2C16288D3A3000D25633 /* OnboardingView.swift in Sources */,
 				6CEB2BF9288D367500D25633 /* SceneDelegate.swift in Sources */,
 				6CEB2C10288D386A00D25633 /* ApplicationCoordinator.swift in Sources */,
 			);
@@ -302,7 +338,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,7 +366,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
